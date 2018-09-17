@@ -25,7 +25,7 @@ public:
     //! Предоставляет копию виджета
     virtual TilingWidget *clone() = 0;
 
-    //! Возращает родительский фрейм виджета
+    //! Возвращает родительский фрейм виджета
     TilingFrame *tilingFrame() { return m_tilingFrame;}
 
 public slots:
