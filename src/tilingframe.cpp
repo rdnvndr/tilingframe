@@ -7,8 +7,8 @@ TilingFrame::TilingFrame(TilingWidget *widget)
 {
     m_layout = new QStackedLayout(this);
     m_layout->setSizeConstraint(QLayout::SetNoConstraint);
-    m_splitter = NULL;
-    m_parentFrame = NULL;
+    m_splitter = nullptr;
+    m_parentFrame = nullptr;
 
     if (widget) {
         m_tilingWidget = widget;
@@ -20,17 +20,17 @@ TilingFrame::TilingFrame(TilingWidget *widget)
 TilingFrame::~TilingFrame()
 {
     delete m_layout;
-    m_layout = NULL;
+    m_layout = nullptr;
     delete m_tilingWidget;
-    m_tilingWidget = NULL;
+    m_tilingWidget = nullptr;
     delete m_splitter;
-    m_splitter = NULL;
-    m_parentFrame = NULL;
+    m_splitter = nullptr;
+    m_parentFrame = nullptr;
 }
 
 bool TilingFrame::isWidget() const
 {
-    return m_tilingWidget != NULL;
+    return m_tilingWidget != nullptr;
 }
 
 TilingWidget *TilingFrame::widget() const
@@ -40,7 +40,7 @@ TilingWidget *TilingFrame::widget() const
 
 bool TilingFrame::isSplitter() const
 {
-    return m_splitter != NULL;
+    return m_splitter != nullptr;
 }
 
 QSplitter *TilingFrame::splitter() const
@@ -58,7 +58,7 @@ void TilingFrame::split(Qt::Orientation orientation)
     m_layout->addWidget(m_splitter);
     m_layout->removeWidget(dynamic_cast<QWidget *>(m_tilingWidget));
     TilingWidget *widget = m_tilingWidget;
-    m_tilingWidget = NULL;
+    m_tilingWidget = nullptr;
 
     TilingFrame *parentFrame = new TilingFrame(widget);
     m_splitter->addWidget(parentFrame);
@@ -96,7 +96,7 @@ void TilingFrame::unsplit(TilingFrame *unsplitFrame)
         childTilingFrame = qobject_cast<TilingFrame *>(m_splitter->widget(0));
 
     QSplitter *oldSplitter = m_splitter;
-    m_splitter = NULL;
+    m_splitter = nullptr;
 
     if (childTilingFrame->isSplitter()) {
         m_splitter = childTilingFrame->takeSplitter();
@@ -127,7 +127,7 @@ void TilingFrame::unsplitAll()
     if (m_splitter)
         return;
 
-    TilingFrame *parentPrevFrame = NULL;
+    TilingFrame *parentPrevFrame = nullptr;
     TilingFrame *parentFrame = this;
     while (parentFrame->parentFrame()) {
         parentPrevFrame = parentFrame;
@@ -148,7 +148,7 @@ void TilingFrame::unsplitAll()
     }
     delete parentPrevFrame;
     delete parentFrame->m_splitter;
-    parentFrame->m_splitter = NULL;
+    parentFrame->m_splitter = nullptr;
 
     emit splitStateChanged();
 }
@@ -159,7 +159,7 @@ TilingWidget *TilingFrame::takeWidget()
     if (m_tilingWidget) {
         m_layout->removeWidget(dynamic_cast<QWidget *>(m_tilingWidget));
     }
-    m_tilingWidget = NULL;
+    m_tilingWidget = nullptr;
     return oldWidget;
 }
 
@@ -168,7 +168,7 @@ QSplitter *TilingFrame::takeSplitter()
     QSplitter *oldSplitter = m_splitter;
     if (m_splitter)
         m_layout->removeWidget(m_splitter);
-    m_splitter = NULL;
+    m_splitter = nullptr;
     return oldSplitter;
 }
 
@@ -181,7 +181,7 @@ TilingFrame *TilingFrame::findParentSplitter() const
         }
         parentFrame = parentFrame->parentFrame();
     }
-    return NULL;
+    return nullptr;
 }
 
 TilingFrame *TilingFrame::parentFrame() const
