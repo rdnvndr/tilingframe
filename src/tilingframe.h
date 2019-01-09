@@ -63,7 +63,7 @@ public slots:
     void splitVertical();
 
     //! Схлопывание фрейма
-    void unsplit(TilingFrame *unsplitFrame = NULL);
+    void unsplit(TilingFrame *unsplitFrame = nullptr);
 
     //! Схлопывание всех фреймов
     void unsplitAll();
