@@ -1,8 +1,7 @@
-#ifndef TILINGFRAMEGLOBAL_H
-#define TILINGFRAMEGLOBAL_H
+#include <QtCore/QtGlobal>
+
 #if defined(TILINGFRAME_LIBRARY)
 #  define TILINGFRAMELIB Q_DECL_EXPORT
 #else
 #  define TILINGFRAMELIB Q_DECL_IMPORT
 #endif
-#endif // TILINGFRAMEGLOBAL_H
